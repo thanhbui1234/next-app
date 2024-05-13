@@ -1,10 +1,13 @@
+'use client'
 import React from 'react'
+import { useRouter } from 'next/router';
 
-type Props = {}
 
-const demo = (props: Props) => {
+const demo = () => {
   return (
-    <div>demo</div>
+   <div>
+    hi
+   </div>
   )
 }
 
