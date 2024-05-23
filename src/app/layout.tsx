@@ -7,6 +7,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import Sidebar from "@/components/ui/Sidebar/page";
 import Link from 'next/link'
 import { IoMdArrowBack } from "react-icons/io";
+import StoreProvider from "./StoreProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className }>
+      <StoreProvider>
       <Header></Header>
       <div className="">
      <div className="flex flex-row px-10 gap-5 min-h-[50vh]">
@@ -36,6 +38,8 @@ export default function RootLayout({
      </div>
        <Footer></Footer>
       </div>
+      </StoreProvider>
+      
       </body>
     </html>
   );
