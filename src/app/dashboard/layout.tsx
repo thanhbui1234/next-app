@@ -1,15 +1,9 @@
-import Footer from "@/components/ui/Footer/page"
+import Footer from '@/components/ui/Footer/page';
 
 export default function DashboardLayout({
-    children, // will be a page or nested layout
-  }: {
-    children: React.ReactNode
-  }) {
-    return (
-      <section>
-       
-        {children}
-
-      </section>
-    )
-  }
+  children, // will be a page or nested layout
+}: {
+  children: React.ReactNode;
+}) {
+  return <section>{children}</section>;
+}

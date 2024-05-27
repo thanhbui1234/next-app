@@ -1,10 +1,9 @@
-import React from 'react'
-import { Skeleton } from "@/components/ui/skeleton"
+import React from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
-type Props = {}
+type Props = {};
 
 const loading = (props: Props) => {
-
   return (
     <div className="flex items-center space-x-4">
       <Skeleton className="h-12 w-12 rounded-full" />
@@ -13,8 +12,7 @@ const loading = (props: Props) => {
         <Skeleton className="h-4 w-[200px]" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-
-export default loading
+export default loading;

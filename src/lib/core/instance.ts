@@ -6,22 +6,22 @@ const axiosInstance = axios.create({
 
 // Add a request interceptor
 axiosInstance.interceptors.request.use(
-  (config) => {
+  config => {
     // You can modify request headers or do other actions here
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );
 
 // Add a response interceptor
 axiosInstance.interceptors.response.use(
-  (response) => {
+  response => {
     // Handle successful responses
     return response.data;
   },
-  (error) => {
+  error => {
     // Handle error responses
     return Promise.reject(error);
   }

@@ -1,0 +1,7 @@
+.cardContainer {
+  height: 1000px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

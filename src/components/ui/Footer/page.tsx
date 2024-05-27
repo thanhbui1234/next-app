@@ -1,8 +1,8 @@
-import { TbBrandGithubCopilot } from "react-icons/tb";
-import { SiGithubactions } from "react-icons/si";
-import { FaGithub } from "react-icons/fa";
+import { TbBrandGithubCopilot } from 'react-icons/tb';
+import { SiGithubactions } from 'react-icons/si';
+import { FaGithub } from 'react-icons/fa';
 
-import Link from "next/link"
+import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className=" flex text-center h-16 w-full shrink-0 items-center border-t-2 border-gray-100 0 bg-gray-50 dark:bg-gray-950">
@@ -12,16 +12,28 @@ export default function Footer() {
           <span className="font-semibold">Acme Inc</span>
         </div>
         <nav className="flex items-center gap-4">
-          <Link className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50" href="#">
+          <Link
+            className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50"
+            href="#"
+          >
             Home
           </Link>
-          <Link className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50" href="#">
+          <Link
+            className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50"
+            href="#"
+          >
             Features
           </Link>
-          <Link className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50" href="#">
+          <Link
+            className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50"
+            href="#"
+          >
             Pricing
           </Link>
-          <Link className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50" href="#">
+          <Link
+            className="text-sm font-medium hover:underline hover:text-gray-900 dark:hover:text-gray-50"
+            href="#"
+          >
             Contact
           </Link>
         </nav>
@@ -43,6 +55,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

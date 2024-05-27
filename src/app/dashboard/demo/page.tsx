@@ -1,14 +1,9 @@
-'use client'
-import React from 'react'
+'use client';
+import React from 'react';
 import { useRouter } from 'next/router';
 
-
 const demo = () => {
-  return (
-   <div>
-    hi
-   </div>
-  )
-}
+  return <div>hi</div>;
+};
 
-export default demo
+export default demo;
