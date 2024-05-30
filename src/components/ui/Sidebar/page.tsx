@@ -102,9 +102,10 @@ const Sidebar: React.FC = () => {
         onClick={onClick}
         style={{ width: 256, marginTop: 50 }}
         defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        defaultOpenKeys={['sub1','sub2','sub4']}
         mode="inline"
         items={items}
+        
       />
     </ConfigProvider>
   );

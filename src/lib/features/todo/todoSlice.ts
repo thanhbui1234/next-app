@@ -1,6 +1,7 @@
-import { jobsAction ,job } from '@/interface';
+import { jobsAction } from '@/interface';
 import { featchJobDetail, fetchJobs } from '@/lib/services';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
 
 const initialState = {
   loading: 'idle',
@@ -8,16 +9,16 @@ const initialState = {
   job : {},
 } as jobsAction;
 
-export const fetchAllJob = createAsyncThunk('fetchJobs', async () => {
+export const fetchAllJob = createAsyncThunk('fetchJobs', async (id?:string) => {
   try {
-    const response = await fetchJobs();
+    const response = await fetchJobs(id);
     return response;
   } catch (error) {
     throw error;
   }
 });
 
-export const fetchJob = createAsyncThunk('fetchJob',async (id:string)=>{
+export const fetchJob = createAsyncThunk('fetchJob',async (id:string,thunkApi)=>{
   try {
     const response = await featchJobDetail(id);
     return response

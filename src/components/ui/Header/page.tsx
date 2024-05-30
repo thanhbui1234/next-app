@@ -15,15 +15,15 @@ export default function Header() {
           <nav className="hidden md:flex gap-4">
             <Link
               className="font-medium flex items-center text-sm transition-colors hover:underline"
-              href="#"
+              href="/"
             >
               Home
             </Link>
             <Link
               className="font-medium flex items-center text-sm transition-colors hover:underline"
-              href="#"
+              href="dashboard"
             >
-              About
+              Dashboard
             </Link>
             <Link
               className="font-medium flex items-center text-sm transition-colors hover:underline"

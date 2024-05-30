@@ -14,7 +14,6 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
 // Add a response interceptor
 axiosInstance.interceptors.response.use(
   response => {

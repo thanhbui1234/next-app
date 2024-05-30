@@ -29,11 +29,6 @@ export default function RootLayout({
             <div className="flex flex-row px-10 gap-5 min-h-[50vh]">
               <Sidebar></Sidebar>
               <div className="w-[100%]">
-                <Link href={`/`}>
-                  <p className="cursor-pointer">
-                    <IoMdArrowBack />
-                  </p>
-                </Link>
                 <AntdRegistry>{children}</AntdRegistry>
               </div>
             </div>
