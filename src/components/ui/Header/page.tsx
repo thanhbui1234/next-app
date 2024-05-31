@@ -21,7 +21,7 @@ export default function Header() {
             </Link>
             <Link
               className="font-medium flex items-center text-sm transition-colors hover:underline"
-              href="dashboard"
+              href="/dashboard"
             >
               Dashboard
             </Link>

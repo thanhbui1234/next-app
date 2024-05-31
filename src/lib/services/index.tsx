@@ -28,3 +28,10 @@ export const featchJobDetail = async (id: string) => {
   }
 };
 
+export const deleteJobs = async (id:string) =>{
+  try {
+    const response = await axiosInstance.delete(`/ /${id}`);
+  } catch (error) {
+    
+  }
+}   
