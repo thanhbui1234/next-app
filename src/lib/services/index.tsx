@@ -4,8 +4,8 @@ import axiosInstance from '../core/instance';
 export const fetchJobs = async (id?:string) => {
   if(!id){
     try {
-      const response = await axiosInstance.get<job[]>('/todo');
-      return response;
+      const response = await axiosInstance.get<job>('/todo');
+      return response ;
     } catch (error) {
       throw error;
     }
@@ -27,11 +27,3 @@ export const featchJobDetail = async (id: string) => {
     throw error;
   }
 };
-
-export const deleteJobs = async (id:string) =>{
-  try {
-    const response = await axiosInstance.delete(`/ /${id}`);
-  } catch (error) {
-    
-  }
-}   

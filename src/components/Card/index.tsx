@@ -11,13 +11,13 @@ import {
 } from '@/components/ui/card';
 import clsx from 'clsx';
 type Props = {
-  data: job[];
+  data: any;
 };
 
 const Cards = ({ data }: Props) => {
   return (
     <div className={clsx('grid grid-cols-3 gap-5', style.cardContainer)}>
-      {data?.map((item, index) => {
+      {data?.map((item : job, index :number) => {
         return (
           <Card
             className="hover:scale-105 duration-100 ease-in-out"
