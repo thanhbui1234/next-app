@@ -15,8 +15,9 @@ import { fetchAllJob } from '@/lib/features/todo/todoSlice';
 import { Button } from '@/components/ui/button';
 import LoadingSpin from '@/components/ui/Loadings/LoadingSpin';
 import ModalConfirm from '@/components/ui/alert';
-
-const page = () => {
+import Image from 'next/image';
+import moment from 'moment';
+export default async function page  ()  {
   const dispatch = useAppDispatch();
   const data = useSelector((state: JobSlice) => state.job.jobs);
   const loading = useAppSelector(state => state.job.loading);
@@ -36,13 +37,10 @@ const page = () => {
           <TableRow>
             <TableHead>Index</TableHead>
             <TableHead>Name</TableHead>
-            <TableHead>Phone</TableHead>
-            <TableHead>Address</TableHead>
-            <TableHead>ingameLol</TableHead>
-            <TableHead>wallet</TableHead>
-            <TableHead>image</TableHead>
-            <TableHead>id</TableHead>
-            <TableHead>TodoId</TableHead>
+            <TableHead>Price</TableHead>
+            <TableHead>Description</TableHead>
+            <TableHead>Image</TableHead>
+            <TableHead>Create at</TableHead>
             <TableHead>Function</TableHead>
           </TableRow>
         </TableHeader>
@@ -53,13 +51,10 @@ const page = () => {
                 <TableRow key={`${index}-${item.id}`}>
                   <TableCell className="font-medium">{index+1}</TableCell>
                   <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.phone}</TableCell>
-                  <TableCell>{item.addRes}</TableCell>
-                  <TableCell>{item.ingameLol}</TableCell>
-                  <TableCell>{item.wallet}</TableCell>
-                  <TableCell>{item.image}</TableCell>
-                  <TableCell>{item.id}</TableCell>
-                  <TableCell>{item.todoId}</TableCell>
+                  <TableCell>{item.price}</TableCell>
+                  <TableCell>{item.description}</TableCell>
+                  <TableCell><Image className='max-h-[50px]' src={item.image} width={50}  height={50} alt="Picture of the author"/></TableCell>
+                  <TableCell>{moment(item.createAt).format('L')}</TableCell>
                   <TableCell className='flex gap-2'>
                     <Button >Update</Button>
                     <Button onClick={handleShow}>Delete</Button>
@@ -75,4 +70,3 @@ const page = () => {
   );
 };
 
-export default page;

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { ThemeProvider } from "@/components/Theme/"
 import './globals.css';
 import Header from '@/components/ui/Header/page';
 import Footer from '@/components/ui/Footer/page';
@@ -23,10 +24,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <StoreProvider>
           <Header></Header>
           <div className="">
-            <div className="flex flex-row px-10 gap-5 min-h-[50vh]">
+            <div className="flex flex-row px-10  gap-5 min-h-[50vh]">
               <Sidebar></Sidebar>
               <div className="w-[100%]">
                 <AntdRegistry>{children}</AntdRegistry>
@@ -35,6 +42,7 @@ export default function RootLayout({
             <Footer></Footer>
           </div>
         </StoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

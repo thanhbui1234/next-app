@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://65b8a548b71048505a891357.mockapi.io',
+  baseURL: 'http://localhost:4000',
 });
 
 // Add a request interceptor

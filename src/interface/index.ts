@@ -19,3 +19,13 @@ export interface JobSlice {
     jobs: job[];
   };
 }
+
+export interface Fork {
+  id: string,
+  name : string,
+  price: number,
+  description : string,
+  image : string,
+  createdAt? : string,
+  updatedAt? : string
+}

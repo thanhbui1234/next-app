@@ -1,16 +1,23 @@
-"use client"
+'use client';
 import { SiCoderwall } from 'react-icons/si';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { GoSearch } from "react-icons/go";
 import Link from 'next/link';
 import { useState } from 'react';
-import SheetSearch from '../sheet/sheetSearch';
+import { ModeToggle } from '../toggle-mode';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export default function Header() {
-  const [show,setShow] = useState(false)
-  const handleShow = () =>{
-    setShow(!show)
-  }
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
   return (
     <nav className=" bg-white shadow-sm dark:bg-gray-950/90">
       <div className="w-full max-w-7xl mx-auto px-4">
@@ -39,20 +46,31 @@ export default function Header() {
             </Link>
             <Link
               className="font-medium flex items-center text-sm transition-colors hover:underline"
-              href="#">
+              href="#"
+            >
               Contact
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <p className="cursor-pointer" onClick={handleShow}> <GoSearch size={27} /></p>
-            <Avatar>
+            <ModeToggle></ModeToggle>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+              <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback>Loading...</AvatarFallback>
             </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className='cursor-pointer'>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Login</DropdownMenuItem>
+                <DropdownMenuItem>Register</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+           
           </div>
         </div>
       </div>
-      <SheetSearch show={show} handleShow={handleShow} ></SheetSearch>
     </nav>
   );
 }

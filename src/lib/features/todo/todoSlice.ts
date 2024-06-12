@@ -12,7 +12,7 @@ const initialState = {
 export const fetchAllJob = createAsyncThunk('fetchJobs', async (id?:string) => {
   try {
     const response = await fetchJobs(id);
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
@@ -21,7 +21,7 @@ export const fetchAllJob = createAsyncThunk('fetchJobs', async (id?:string) => {
 export const fetchJob = createAsyncThunk('fetchJob',async (id:string,thunkApi)=>{
   try {
     const response = await featchJobDetail(id);
-    return response
+    return response.data
   } catch (error) {
     throw(error)
   }

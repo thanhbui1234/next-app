@@ -99,6 +99,7 @@ const Sidebar: React.FC = () => {
       }}
     >
       <Menu
+      className='dark:bg-[#1A2130] dark:text-white'
         onClick={onClick}
         style={{ width: 256, marginTop: 50 }}
         defaultSelectedKeys={['1']}
