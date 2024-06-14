@@ -4,11 +4,11 @@ import { featchJobDetail, fetchJobs } from '@/lib/services';
 import { registerAccount } from '@/lib/services/auth';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-
 const initialState = {
   loading: 'idle',
   jobs: [],
   job : {},
+  response : {}
 } as jobsAction;
 
 export const fetchAllJob = createAsyncThunk('fetchJobs', async (id?:string) => {
@@ -20,7 +20,7 @@ export const fetchAllJob = createAsyncThunk('fetchJobs', async (id?:string) => {
   }
 });
 
-export const fetchJob = createAsyncThunk('fetchJob',async (id:string,thunkApi)=>{
+export const fetchJob = createAsyncThunk('fetchJob',async (id:string)=>{
   try {
     const response = await featchJobDetail(id);
     return response.data
@@ -31,12 +31,13 @@ export const fetchJob = createAsyncThunk('fetchJob',async (id:string,thunkApi)=>
 
 export const createAccount = createAsyncThunk('createAccount',async (body : signUp)=>{
   try {
-      await registerAccount(body)
+    const respone : any = await registerAccount(body);
+    return respone;
   } catch (error) {
-    console.log(error);
-    
+    throw (error);
   }
 })
+
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -73,8 +74,9 @@ export const counterSlice = createSlice({
     builder.addCase(createAccount.rejected,(state)=>{
       state.loading = 'failed'
     })
-    builder.addCase(createAccount.fulfilled,(state)=>{
+    builder.addCase(createAccount.fulfilled,(state,action)=>{
       state.loading = 'succeeded'
+      state.response = action.payload
     })
   },
 });

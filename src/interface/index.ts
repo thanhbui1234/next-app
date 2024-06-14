@@ -1,7 +1,10 @@
+import { UnknownAction } from "redux";
+
 export interface jobsAction {
   loading: 'idle' | 'pending' | 'succeeded' | 'failed';
   jobs: job[];
   job : job | {};
+  response: unknown;
 }
 
 export interface job {

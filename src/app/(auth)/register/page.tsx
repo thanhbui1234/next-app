@@ -1,11 +1,8 @@
-import React from 'react'
-
-type Props = {}
-
-const pageRegister = (props: Props) => {
+import RegisterForm from "@/components/Form";
+export default function ProfileForm() {
   return (
-    <div>pageRegister</div>
+  <>
+   <RegisterForm></RegisterForm>
+  </>
   )
 }
-
-export default pageRegister

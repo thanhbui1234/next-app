@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export default function Header() {
+export default function   Header() {
   const [show, setShow] = useState(false);
   const handleShow = () => {
     setShow(!show);
@@ -53,12 +53,13 @@ export default function Header() {
           </nav>
           <div className="flex items-center gap-4">
             <ModeToggle></ModeToggle>
+            <p>Chis Thanh</p>
             <DropdownMenu>
               <DropdownMenuTrigger>
               <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>Loading...</AvatarFallback>
-            </Avatar>
+             </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent className='cursor-pointer'>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>

@@ -18,30 +18,25 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { signUp } from '@/interface/auth';
-import { formSchema } from '@/lib/schema/auth';
-import { createAccount } from '@/lib/features/todo/todoSlice';
+import {  loginSchema } from '@/lib/schema/auth';
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const router = useRouter();
   const { toast } = useToast();
   const {
     formState: { errors },
     reset,
   } = useForm<signUp>();
-  const dispact = useAppDispatch();     
-  const loading = useAppSelector(state => state.job.loading);
-  const respone: any = useAppSelector(state => state.job.response);
+  const dispact = useAppDispatch();
+//   const loading = useAppSelector(state => state.job.loading);
+//   const respone: any = useAppSelector(state => state.job.response);
   const onSubmit: SubmitHandler<signUp> = data => {
-    dispact(createAccount(data));
-    router.push('/login')
-  };
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+    };
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      name: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
   });
   return (
@@ -50,19 +45,6 @@ const RegisterForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-10 py-16"
       >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="User name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"
@@ -89,29 +71,15 @@ const RegisterForm = () => {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confrim password</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Confirm password"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+       
         <Button type="submit">
-          {loading === 'pending' ? 'Loading' : 'Send'}
+          {/* {loading === 'pending' ? 'Loading' : 'Send'} */}
+
+          Send
         </Button>
       </form>
     </Form>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

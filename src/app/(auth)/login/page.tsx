@@ -1,8 +1,9 @@
-import RegisterForm from "@/components/Form";
-export default function ProfileForm() {
+import LoginForm from '@/components/Form/login'
+
+const pageLogin = () => {
   return (
-  <>
-   <RegisterForm></RegisterForm>
-  </>
+    <LoginForm></LoginForm>
   )
 }
+
+export default pageLogin
