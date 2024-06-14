@@ -8,6 +8,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hook';
 import { useSelector } from 'react-redux';
 import { JobSlice } from '@/interface';
@@ -17,19 +25,24 @@ import LoadingSpin from '@/components/ui/Loadings/LoadingSpin';
 import ModalConfirm from '@/components/ui/alert';
 import Image from 'next/image';
 import moment from 'moment';
-export default async function page  ()  {
+export default async function page() {
   const dispatch = useAppDispatch();
   const data = useSelector((state: JobSlice) => state.job.jobs);
   const loading = useAppSelector(state => state.job.loading);
-  const [show,setShow] = useState(false);
-  const handleShow = () =>{
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
     setShow(!show);
-  }
+  };
   useEffect(() => {
     dispatch(fetchAllJob());
   }, []);
 
-  if (loading === 'pending') return <div className="top-[30%] relative translate-x-[50%] translate-y-[50%]"><LoadingSpin></LoadingSpin></div>
+  if (loading === 'pending')
+    return (
+      <div className="top-[30%] relative translate-x-[50%] translate-y-[50%]">
+        <LoadingSpin></LoadingSpin>
+      </div>
+    );
   return (
     <>
       <Table>
@@ -45,18 +58,40 @@ export default async function page  ()  {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((item : any, index) => {
+          {data.map((item: any, index) => {
             return (
               <Fragment key={`${index}-${item.id}`}>
                 <TableRow key={`${index}-${item.id}`}>
-                  <TableCell className="font-medium">{index+1}</TableCell>
+                  <TableCell className="font-medium">{index + 1}</TableCell>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.price}</TableCell>
                   <TableCell>{item.description}</TableCell>
-                  <TableCell><Image className='max-h-[50px]' src={item.image} width={50}  height={50} alt="Picture of the author"/></TableCell>
+                  <TableCell>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Image
+                          className="max-h-[50px]"
+                          src={item.image}
+                          width={50}
+                          height={50}
+                          alt="Picture of the author"
+                        />
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Are you absolutely sure?</DialogTitle>
+                          <DialogDescription>
+                            This action cannot be undone. This will permanently
+                            delete your account and remove your data from our
+                            servers.
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </TableCell>
                   <TableCell>{moment(item.createAt).format('L')}</TableCell>
-                  <TableCell className='flex gap-2'>
-                    <Button >Update</Button>
+                  <TableCell className="flex gap-2">
+                    <Button>Update</Button>
                     <Button onClick={handleShow}>Delete</Button>
                   </TableCell>
                 </TableRow>
@@ -68,5 +103,4 @@ export default async function page  ()  {
       <ModalConfirm show={show} handleShow={handleShow}></ModalConfirm>
     </>
   );
-};
-
+}

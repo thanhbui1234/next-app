@@ -63,8 +63,8 @@ export default function Header() {
               <DropdownMenuContent className='cursor-pointer'>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Login</DropdownMenuItem>
-                <DropdownMenuItem>Register</DropdownMenuItem>
+                <DropdownMenuItem><Link href={'login'}>Login</Link></DropdownMenuItem>
+                <DropdownMenuItem><Link href={'register'}>Register</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
            

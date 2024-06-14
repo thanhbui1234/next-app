@@ -3,11 +3,9 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/Theme/"
 import './globals.css';
 import Header from '@/components/ui/Header/page';
-import Footer from '@/components/ui/Footer/page';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import Sidebar from '@/components/ui/Sidebar/page';
-import Link from 'next/link';
-import { IoMdArrowBack } from 'react-icons/io';
+
 import StoreProvider from './StoreProvider';
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,13 +31,11 @@ export default function RootLayout({
         <StoreProvider>
           <Header></Header>
           <div className="">
-            <div className="flex flex-row px-10  gap-5 min-h-[50vh]">
-              <Sidebar></Sidebar>
+            <div className="flex flex-row px-10 gap-5 min-h-[50vh]">
               <div className="w-[100%]">
                 <AntdRegistry>{children}</AntdRegistry>
               </div>
             </div>
-            <Footer></Footer>
           </div>
         </StoreProvider>
         </ThemeProvider>

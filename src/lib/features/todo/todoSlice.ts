@@ -1,5 +1,7 @@
 import { jobsAction } from '@/interface';
+import { signUp } from '@/interface/auth';
 import { featchJobDetail, fetchJobs } from '@/lib/services';
+import { registerAccount } from '@/lib/services/auth';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
@@ -24,6 +26,15 @@ export const fetchJob = createAsyncThunk('fetchJob',async (id:string,thunkApi)=>
     return response.data
   } catch (error) {
     throw(error)
+  }
+})
+
+export const createAccount = createAsyncThunk('createAccount',async (body : signUp)=>{
+  try {
+      await registerAccount(body)
+  } catch (error) {
+    console.log(error);
+    
   }
 })
 
@@ -56,7 +67,15 @@ export const counterSlice = createSlice({
       state.loading = 'succeeded';
       state.job = action.payload
     })
-
+    builder.addCase(createAccount.pending,(state)=>{
+      state.loading = 'pending'
+    })
+    builder.addCase(createAccount.rejected,(state)=>{
+      state.loading = 'failed'
+    })
+    builder.addCase(createAccount.fulfilled,(state)=>{
+      state.loading = 'succeeded'
+    })
   },
 });
 

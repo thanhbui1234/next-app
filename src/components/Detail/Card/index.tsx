@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import Link from 'next/link'
 import Image from 'next/image'
 const CardItem = ({ className, ...props }: any) => {
   const { job } = props;
@@ -36,7 +37,8 @@ const CardItem = ({ className, ...props }: any) => {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <Check className="mr-2 h-4 w-4" /> Mark all as read
+          <Check className="mr-2 h-4 w-4" /> 
+          <Link href='cc'>Edit</Link>
         </Button>
       </CardFooter>
     </Card>
